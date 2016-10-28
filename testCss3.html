@@ -16,13 +16,15 @@
 		<link href="css/font-awesome.min.css" rel="stylesheet">
 		<style>
 			html, body { height:100%; background-color:gray; }
-			.box-red { background-color:#ff3300; }
-			.box-green { background-color:#009900; }
-			.box-blue { background-color:#0066ff; }
-			.box { font-size:12px; height:200px; color:#FFFFFF; transition:font-size 0.4s ease-in-out; }
+			.box { height:200px; background-color:rgb(51, 133, 255); color:#FFFFFF; font-size:12px; transition:font-size 0.3s ease-in-out 0s; }
 			.box > .boxContent { position:relative; width:100%; height:100%; }
-			.box > .boxContent > span { margin:0; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%); }
+			.box > .boxContent > .boxTitle { margin:0; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%); }
 			.box:hover { font-size:24px; }
+			.box > .boxContent > .badge-left-top, .box > .boxContent > .badge-right-top, .box > .boxContent > .badge-left-bottom, .box > .boxContent > .badge-right-bottom { position:absolute; }
+			.box > .boxContent > .badge-left-top { top:0; left:0; margin: 5px 0 0 5px; }
+			.box > .boxContent > .badge-right-top { top:0; right:0; margin:5px 5px 0 0; }
+			.box > .boxContent > .badge-left-bottom { bottom:0; left:0; margin: 0 0 5px 5px; }
+			.box > .boxContent > .badge-right-bottom { bottom:0; right:0; margin:0 5px 5px 0; }
 		</style>
 	</head>
 	<body>
@@ -30,23 +32,35 @@
 			<div style="margin-top:200px;">
 				<div class="row">
 					<div class="col-xs-4" style="padding:10px;">
-						<div id="box1" class="box box-blue">
-							<div class="boxContent">
-								<span>Box 1</span>
+						<div id="box1" class="box">
+							<div class="boxContent text-center">
+								<span class="badge badge-left-top"></span>
+								<span class="badge badge-right-top"></span>
+								<span class="badge badge-left-bottom"></span>
+								<span class="badge badge-right-bottom"></span>
+								<span class="boxTitle">Box 1<br/><span class="badge badge-center"></span></span>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-4" style="padding:10px;">
-						<div id="box2" class="box box-blue">
-							<div class="boxContent">
-								<span>Box 2</span>
+						<div id="box2" class="box">
+							<div class="boxContent text-center">
+								<span class="badge badge-left-top"></span>
+								<span class="badge badge-right-top"></span>
+								<span class="badge badge-left-bottom"></span>
+								<span class="badge badge-right-bottom"></span>
+								<span class="boxTitle">Box 2<br/><span class="badge badge-center"></span></span>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-4" style="padding:10px;">
-						<div id="box3" class="box box-blue">
-							<div class="boxContent">
-								<span>Box 3</span>
+						<div id="box3" class="box">
+							<div class="boxContent text-center">
+								<span class="badge badge-left-top"></span>
+								<span class="badge badge-right-top"></span>
+								<span class="badge badge-left-bottom"></span>
+								<span class="badge badge-right-bottom"></span>
+								<span class="boxTitle">Box 3<br/><span class="badge badge-center"></span></span>
 							</div>
 						</div>
 					</div>
