@@ -14,17 +14,9 @@
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
 		<link href="css/font-awesome.min.css" rel="stylesheet">
+		<link href="js/illuminate/illuminate.css" rel="stylesheet">
 		<style>
-			html, body { height:100%; background-color:gray; }
-			.box { height:200px; background-color:rgb(51, 133, 255); color:#FFFFFF; font-size:12px; transition:font-size 0.3s ease-in-out 0s; }
-			.box > .boxContent { position:relative; width:100%; height:100%; }
-			.box > .boxContent > .boxTitle { margin:0; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%); }
-			.box:hover { font-size:24px; }
-			.box > .boxContent > .badge-left-top, .box > .boxContent > .badge-right-top, .box > .boxContent > .badge-left-bottom, .box > .boxContent > .badge-right-bottom { position:absolute; }
-			.box > .boxContent > .badge-left-top { top:0; left:0; margin: 5px 0 0 5px; }
-			.box > .boxContent > .badge-right-top { top:0; right:0; margin:5px 5px 0 0; }
-			.box > .boxContent > .badge-left-bottom { bottom:0; left:0; margin: 0 0 5px 5px; }
-			.box > .boxContent > .badge-right-bottom { bottom:0; right:0; margin:0 5px 5px 0; }
+			html, body { height:100%; }			
 		</style>
 	</head>
 	<body>
@@ -32,43 +24,35 @@
 			<div style="margin-top:200px;">
 				<div class="row">
 					<div class="col-xs-4" style="padding:10px;">
-						<div id="box1" class="box">
-							<div class="boxContent text-center">
-								<span class="badge badge-left-top"></span>
-								<span class="badge badge-right-top"></span>
-								<span class="badge badge-left-bottom"></span>
-								<span class="badge badge-right-bottom"></span>
-								<span class="boxTitle">Box 1<br/><span class="badge badge-center"></span></span>
+						<div id="illuminateBox1" class="illuminate-box">
+							<div class="illuminate-box-content text-center">
+								<span class="illuminate-box-title">Box 1</span>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-4" style="padding:10px;">
-						<div id="box2" class="box">
-							<div class="boxContent text-center">
-								<span class="badge badge-left-top"></span>
-								<span class="badge badge-right-top"></span>
-								<span class="badge badge-left-bottom"></span>
-								<span class="badge badge-right-bottom"></span>
-								<span class="boxTitle">Box 2<br/><span class="badge badge-center"></span></span>
+						<div id="illuminateBox2" class="illuminate-box">
+							<div class="illuminate-box-content text-center">
+								<span class="illuminate-box-title">Box 2</span></span>
 							</div>
 						</div>
 					</div>
 					<div class="col-xs-4" style="padding:10px;">
-						<div id="box3" class="box">
-							<div class="boxContent text-center">
-								<span class="badge badge-left-top"></span>
-								<span class="badge badge-right-top"></span>
-								<span class="badge badge-left-bottom"></span>
-								<span class="badge badge-right-bottom"></span>
-								<span class="boxTitle">Box 3<br/><span class="badge badge-center"></span></span>
+						<div id="illuminateBox3" class="illuminate-box">
+							<div class="illuminate-box-content text-center">
+								<span class="illuminate-box-title">Box 3</span></span>
 							</div>
 						</div>
+					</div>
+					<div class="col-xs-12">
+						<h4 id="illuminateText1" class="illuminate-text text-center">Testing CSS3 properties in simple illumination simulation.<br />Light source is mouse cursor.</h4>
 					</div>
 				</div>
 			</div>
 		</div>
 		<script src="js/jquery-2.2.3.min.js"></script>
 		<script src="js/bootstrap.min.js"></script>
+		<script src="js/illuminate/illuminate.js"></script>
 		<script src="js/custom.js"></script>
 	</body>
 </html>
