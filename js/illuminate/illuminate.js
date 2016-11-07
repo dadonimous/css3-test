@@ -18,7 +18,10 @@
 		bodyRadialGradientColorStop2: 'gray',
 		boxRadialGradientColorStop1: 'rgb(51, 133, 255)',
 		boxRadialGradientColorStop2: 'rgb(0, 82, 198)',
-		mouseOverElementId: null
+		renderInterval: 33, // in miliseconds
+		mouseOverElementId: null,
+		lightPosition: null,
+		lastRenderedLightPosition: null
     };
 
     function Illuminate(settings, $elem) {
@@ -77,7 +80,14 @@
 			});
 			
 			$('body').css({ 'background-color': $this.settings.bodyRadialGradientColorStop2 });
-			$('body').on('mousemove', function(e) { setBackgroundAnimation(e.pageX, e.pageY); setAnimation(e.pageX, e.pageY); });
+			$('body').on('illuminate.lightmove', function(e, position) { $this.settings.lightPosition = position; });
+			setInterval(function() {
+				if ($this.settings.lightPosition != null && $this.settings.lightPosition != undefined &&
+					JSON.stringify($this.settings.lightPosition) !== JSON.stringify($this.settings.lastRenderedLightPosition)) {
+					setBackgroundAnimation($this.settings.lightPosition.left, $this.settings.lightPosition.top);
+					setAnimation($this.settings.lightPosition.left, $this.settings.lightPosition.top);
+					$this.settings.lastRenderedLightPosition = $.extend(true, {}, $this.settings.lightPosition);
+				}}, $this.settings.renderInterval);
 			$illuminateContainer.on('mouseenter', '.illuminate-box, .illuminate-text', function() { $this.settings.mouseOverElementId = $(this).attr('id'); });
 			$illuminateContainer.on('mouseleave', '.illuminate-box, .illuminate-text', function() { $this.settings.mouseOverElementId = null; });
 			
