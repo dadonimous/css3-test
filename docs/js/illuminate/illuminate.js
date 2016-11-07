@@ -84,18 +84,18 @@
 			setInterval(function() {
 				if ($this.settings.lightPosition != null && $this.settings.lightPosition != undefined &&
 					JSON.stringify($this.settings.lightPosition) !== JSON.stringify($this.settings.lastRenderedLightPosition)) {
-					setBackgroundAnimation($this.settings.lightPosition.left, $this.settings.lightPosition.top);
-					setAnimation($this.settings.lightPosition.left, $this.settings.lightPosition.top);
+					setBackgroundAnimation();
+					setAnimation();
 					$this.settings.lastRenderedLightPosition = $.extend(true, {}, $this.settings.lightPosition);
 				}}, $this.settings.renderInterval);
 			$illuminateContainer.on('mouseenter', '.illuminate-box, .illuminate-text', function() { $this.settings.mouseOverElementId = $(this).attr('id'); });
 			$illuminateContainer.on('mouseleave', '.illuminate-box, .illuminate-text', function() { $this.settings.mouseOverElementId = null; });
 			
-			function setBackgroundAnimation(pageX, pageY) {
-				$('body').css('background', 'radial-gradient(circle at ' + pageX + 'px ' + pageY + 'px, ' + $this.settings.bodyRadialGradientColorStop1 + ', ' + $this.settings.bodyRadialGradientColorStop2 + ')');
+			function setBackgroundAnimation() {
+				$('body').css('background', 'radial-gradient(circle at ' + $this.settings.lightPosition.left + 'px ' + $this.settings.lightPosition.top + 'px, ' + $this.settings.bodyRadialGradientColorStop1 + ', ' + $this.settings.bodyRadialGradientColorStop2 + ')');
 			}
 			
-			function setAnimation(pageX, pageY) {
+			function setAnimation() {
 				$illuminateContainer.find('.illuminate-box').each(function() {
 					var $box = $(this);
 					if ($this.settings.mouseOverElementId == $box.attr('id')) {
@@ -109,16 +109,15 @@
 						var boxWidth = $box.width();
 						var boxHeight = $box.height();
 
-						var boxCenter = { x:(boxPosition.left + boxWidth / 2), y:(boxPosition.top + boxHeight/2) };
-						var mousePosition = { x:pageX, y:pageY };
-						var angleDeg = Math.atan2(mousePosition.y - boxCenter.y, mousePosition.x - boxCenter.x) * 180 / Math.PI;
+						var boxCenter = { left:(boxPosition.left + boxWidth / 2), top:(boxPosition.top + boxHeight/2) };
+						var angleDeg = Math.atan2($this.settings.lightPosition.top - boxCenter.top, $this.settings.lightPosition.left - boxCenter.left) * 180 / Math.PI;
 
 						// get background-color for gradient
 						backgroundColor = $this.settings.boxRadialGradientColorStop1;
 						backgroundColorDarker = $this.settings.boxRadialGradientColorStop2;
 
 						// calculate the distance
-						distance = Math.sqrt( (boxCenter.x-mousePosition.x)*(boxCenter.x-mousePosition.x) + (boxCenter.y-mousePosition.y)*(boxCenter.y-mousePosition.y) );
+						distance = Math.sqrt( (boxCenter.left-$this.settings.lightPosition.left)*(boxCenter.left-$this.settings.lightPosition.left) + (boxCenter.top-$this.settings.lightPosition.top)*(boxCenter.top-$this.settings.lightPosition.top) );
 
 						// calculate spread radius
 						spreadRadius = Math.round((distance - 100) / 10);
@@ -187,12 +186,11 @@
 						var elemWidth = $elem.width();
 						var elemHeight = $elem.height();
 
-						var boxCenter = { x:(elemPosition.left + elemWidth / 2), y:(elemPosition.top + elemHeight/2) };
-						var mousePosition = { x:pageX, y:pageY };
-						var angleDeg = Math.atan2(mousePosition.y - boxCenter.y, mousePosition.x - boxCenter.x) * 180 / Math.PI;
+						var boxCenter = { left:(elemPosition.left + elemWidth / 2), top:(elemPosition.top + elemHeight/2) };
+						var angleDeg = Math.atan2($this.settings.lightPosition.top - boxCenter.top, $this.settings.lightPosition.left - boxCenter.left) * 180 / Math.PI;
 
 						// calculate the distance
-						distance = Math.sqrt( (boxCenter.x-mousePosition.x)*(boxCenter.x-mousePosition.x) + (boxCenter.y-mousePosition.y)*(boxCenter.y-mousePosition.y) );
+						distance = Math.sqrt( (boxCenter.left-$this.settings.lightPosition.left)*(boxCenter.left-$this.settings.lightPosition.left) + (boxCenter.top-$this.settings.lightPosition.top)*(boxCenter.top-$this.settings.lightPosition.top) );
 
 						// calculate spread radius
 						blurRadius = Math.round(distance / 10);
